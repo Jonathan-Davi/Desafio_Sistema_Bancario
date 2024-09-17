@@ -25,6 +25,29 @@ def deposito(saldo, extrato):
     print(f"Novo Saldo: {saldo}")
     return saldo, extrato
 
+def sacar(saldo, extrato, numero_saques, LIMITE_SAQUES):
+    valor = float(input("Entre com o valor do saque: "))
+
+    if numero_saques >= LIMITE_SAQUES:
+        print("Número de saques diários excedido!!")
+        return saldo, extrato, numero_saques
+
+    if valor > saldo:
+        print("Saldo insuficiente!!")
+
+    elif valor > 0:
+        saldo -= valor
+        extrato += f"Saque: R$ {valor:.2f}\n"
+        numero_saques += 1
+        print(f"Saque de R$ {valor:.2f} realizado com sucesso!")
+
+    else:
+        print("Valor de saque inválido!")
+
+    print(f"Novo saldo: R$ {saldo:.2f}")
+    return saldo, extrato, numero_saques
+
+
 while True:
 
     opcao = input(menu)
@@ -33,7 +56,7 @@ while True:
         saldo, extrato = deposito(saldo, extrato)
 
     elif opcao == "2":
-        print("Sacar")
+        saldo, extrato, numero_saques = sacar(saldo, extrato, numero_saques, LIMITE_SAQUES)
 
     elif opcao == "3":
         print("Visualizar Extrato")
