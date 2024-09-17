@@ -11,7 +11,7 @@ saldo = 0
 limite = 500
 extrato = ""
 numero_saques = 0
-LIMITE_SAQUES = 5
+LIMITE_SAQUES = 3
 
 def deposito(saldo, extrato):
     valor = float(input("Entre com o valor do deposito: "))
@@ -22,33 +22,38 @@ def deposito(saldo, extrato):
     else:
         print("Valor Inválido")
 
-    print(f"Novo Saldo: {saldo}")
+    print(f"\nNovo Saldo: {saldo}")
     return saldo, extrato
 
 def sacar(saldo, extrato, numero_saques, LIMITE_SAQUES):
     valor = float(input("Entre com o valor do saque: "))
 
     if numero_saques >= LIMITE_SAQUES:
-        print("Número de saques diários excedido!!")
+        print("\nNúmero de saques diários excedido!!")
         return saldo, extrato, numero_saques
 
     if valor > saldo:
-        print("Saldo insuficiente!!")
+        print("\nSaldo insuficiente!!")
 
-    elif valor > 0:
+    elif valor > 0 and valor <= 500:
         saldo -= valor
         extrato += f"Saque: R$ {valor:.2f}\n"
         numero_saques += 1
-        print(f"Saque de R$ {valor:.2f} realizado com sucesso!")
+        print(f"\nSaque de R$ {valor:.2f} realizado com sucesso!")
 
     else:
-        print("Valor de saque inválido!")
+        print("\nNão foi possível realizar o saque!!\n")
 
     print(f"Novo saldo: R$ {saldo:.2f}")
     return saldo, extrato, numero_saques
 
 def ext(extrato):
-    return print(f"\n-===-Extrato da conta-===-\n{extrato}")
+    if extrato == "":
+        print("Não foram realizadas movimentações!")
+
+    else:
+        return print(f"\n-===-Extrato da conta-===-\n{extrato}")
+
 
 while True:
 
