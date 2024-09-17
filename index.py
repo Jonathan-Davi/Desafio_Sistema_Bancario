@@ -35,14 +35,14 @@ def sacar(saldo, extrato, numero_saques, LIMITE_SAQUES):
     if valor > saldo:
         print("\nSaldo insuficiente!!")
 
-    elif valor > 0 and valor <= 500:
+    elif valor > 0 and valor <= limite:
         saldo -= valor
         extrato += f"Saque: R$ {valor:.2f}\n"
         numero_saques += 1
         print(f"\nSaque de R$ {valor:.2f} realizado com sucesso!")
 
     else:
-        print("\nNão foi possível realizar o saque!!\n")
+        print("\nNão foi possível realizar o saque!!")
 
     print(f"Novo saldo: R$ {saldo:.2f}")
     return saldo, extrato, numero_saques
