@@ -47,6 +47,8 @@ def sacar(saldo, extrato, numero_saques, LIMITE_SAQUES):
     print(f"Novo saldo: R$ {saldo:.2f}")
     return saldo, extrato, numero_saques
 
+def ext(extrato):
+    return print(f"\n-===-Extrato da conta-===-\n{extrato}")
 
 while True:
 
@@ -59,7 +61,7 @@ while True:
         saldo, extrato, numero_saques = sacar(saldo, extrato, numero_saques, LIMITE_SAQUES)
 
     elif opcao == "3":
-        print("Visualizar Extrato")
+        ext(extrato)
 
     elif opcao == "0":
         print("Finalizando Programa!!")
